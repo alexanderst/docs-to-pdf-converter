@@ -22,7 +22,9 @@ public class MainClass{
 		DOCX,
 		PPT,
 		PPTX,
-		ODT
+		ODT,
+		XLS,
+		XLSX
 	}
 	
 	public static void main(String[] args){
@@ -96,7 +98,10 @@ public class MainClass{
 					converter = new PptxToPDFConverter(inStream, outStream, shouldShowMessages, true);
 				} else if(lowerCaseInPath.endsWith("odt")){
 					converter = new OdtToPDF(inStream, outStream, shouldShowMessages, true);
-				} else {
+				} else if(lowerCaseInPath.endsWith("xls")){
+					converter = new XLSToPDFConverter(inStream, outStream, shouldShowMessages, true);
+				}
+				else {
 					converter = null;
 				}
 
@@ -114,6 +119,7 @@ public class MainClass{
 				break;
 				case ODT: converter = new OdtToPDF(inStream, outStream, shouldShowMessages, true);
 				break;
+				case XLS: converter = new XLSToPDFConverter(inStream, outStream, shouldShowMessages, true);
 				default: converter = null;
 				break;
 
